@@ -49,6 +49,10 @@ function Awake () {
         character = transform;
     
     initOffsetToPlayer = mainCameraTransform.position - character.position;
+
+    if (cursorPrefab) {
+        cursorObject = (Instantiate (cursorPrefab) as GameObject).transform;
+    }
         
     // Save camera offset so we can use it in the first frame
     cameraOffset = mainCameraTransform.position - character.position;
@@ -128,11 +132,9 @@ function Update () {
                             
     // The facing direction is the direction from the character to the cursor world position
     motor.facingDirection = Quaternion.AngleAxis(Input.GetAxis("Horizontal") * 3, Vector3.up) * character.forward;
-    // motor.facingDirection.y = 0;
-    // Debug.Log(character.forward);
     
     // Draw the cursor nicely
-    HandleCursorAlignment (cursorWorldPosition);
+    HandleCursorAlignment(mainCamera.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
             
         
     // HANDLE CAMERA POSITION
@@ -166,15 +168,12 @@ function HandleCursorAlignment (cursorWorldPosition : Vector3) {
         return;
     
     // HANDLE CURSOR POSITION
-    
+
     // Set the position of the cursor object
     cursorObject.position = cursorWorldPosition;
     
-    #if !UNITY_FLASH
-        // Hide mouse cursor when within screen area, since we're showing game cursor instead
-        Screen.showCursor = (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height);
-    #endif
-    
+    // Hide mouse cursor when within screen area, since we're showing game cursor instead
+    Screen.showCursor = (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height);
     
     // HANDLE CURSOR ROTATION
     

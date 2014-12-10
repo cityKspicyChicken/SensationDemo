@@ -28,15 +28,17 @@ function Update () {
 	if (firing) {
 
 		if (Time.time > lastFireTime + 1 / frequency) {
+            var hitInfo : RaycastHit = raycast.GetHitInfo ();
+
 			// Spawn visual bullet
 			var coneRandomRotation = Quaternion.Euler (Random.Range (-coneAngle, coneAngle), Random.Range (-coneAngle, coneAngle), 0);
-			var go : GameObject = Spawner.Spawn (bulletPrefab, spawnPoint.position, spawnPoint.rotation * coneRandomRotation) as GameObject;
+            var aimingRotation = Quaternion.FromToRotation(spawnPoint.forward, raycast.ray.direction.normalized);
+			var go : GameObject = Spawner.Spawn (bulletPrefab, spawnPoint.position, aimingRotation * spawnPoint.rotation * coneRandomRotation) as GameObject;
 			var bullet : SimpleBullet = go.GetComponent.<SimpleBullet> ();
 
 			lastFireTime = Time.time;
 
 			// Find the object hit by the raycast
-			var hitInfo : RaycastHit = raycast.GetHitInfo ();
 			if (hitInfo.transform) {
 				// Get the health component of the target if any
 				var targetHealth : Health = hitInfo.transform.GetComponent.<Health> ();
