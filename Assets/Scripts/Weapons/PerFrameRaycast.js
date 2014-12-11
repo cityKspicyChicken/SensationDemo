@@ -3,29 +3,34 @@
 var origin : Transform;
 
 private var hitInfo : RaycastHit;
-private var tr : Transform;
+
 var ray : Ray;
 
 function Awake () {
-	tr = transform;
 }
 
 function Update () {
 	// Cast a ray to find out the end point of the laser
 	hitInfo = RaycastHit ();
 
-    var cameraHitInfo = RaycastHit ();
-    var cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-    if (Physics.Raycast(cameraRay, cameraHitInfo)) {
-        var aimingRay = Ray(origin.position, cameraHitInfo.point - origin.position);
-        Physics.Raycast(aimingRay, hitInfo);
-        ray = aimingRay;
-    } else {
-        var aimingPoint = Camera.main.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 200));
-        ray = Ray(origin.position, cameraRay.direction);
+    ray = GetAimingRay();
+
+    if (!Physics.Raycast(ray, hitInfo)) {
+        var aimingPoint = ray.origin + ray.direction.normalized * 200;
         hitInfo.point = aimingPoint;
-        hitInfo.distance = Vector3.Distance(origin.position, aimingPoint);
-        hitInfo.normal = (origin.position - aimingPoint).normalized;
+        hitInfo.distance = 200;
+        hitInfo.normal = (ray.origin - aimingPoint).normalized;
+    }
+}
+
+private function GetAimingRay () : Ray {
+    var cameraHitInfo = RaycastHit ();
+    var cameraRay = CameraManager.activeCamera.ScreenPointToRay(Input.mousePosition);
+    if (Physics.Raycast(cameraRay, cameraHitInfo)) {
+        return Ray(origin.position, cameraHitInfo.point - origin.position);
+    } else {
+        var aimingPoint = CameraManager.activeCamera.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 200));
+        return Ray(origin.position, aimingPoint - origin.position);
     }
 }
 
