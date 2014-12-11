@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1002 &100001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -2888,13 +2888,13 @@ Animation:
   m_GameObject: {fileID: 100114}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400030, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  m_Animation: {fileID: 7400000, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
   m_Animations:
-  - {fileID: 7400030, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
-  - {fileID: 7400032, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
-  - {fileID: 7400034, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
-  - {fileID: 7400036, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
-  - {fileID: 7400038, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  - {fileID: 7400000, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
+  - {fileID: 7400002, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
+  - {fileID: 7400004, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
+  - {fileID: 7400006, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
+  - {fileID: 7400008, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
   - {fileID: 7400000, guid: 00a2c2298d1f54f909674141edb1041b, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
@@ -3028,29 +3028,29 @@ MonoBehaviour:
   upperBodyBone: {fileID: 400080}
   maxIdleSpeed: .5
   minWalkSpeed: 2
-  idle: {fileID: 7400030, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
-  turn: {fileID: 7400030, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  idle: {fileID: 7400000, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
+  turn: {fileID: 7400000, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
   shootAdditive: {fileID: 7400000, guid: 00a2c2298d1f54f909674141edb1041b, type: 2}
   moveAnimations:
-  - clip: {fileID: 7400032, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  - clip: {fileID: 7400002, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
     velocity: {x: 0, y: 0, z: 6}
     weight: 0
     currentBest: 0
     speed: 0
     angle: 0
-  - clip: {fileID: 7400034, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  - clip: {fileID: 7400004, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
     velocity: {x: 0, y: 0, z: -6}
     weight: 0
     currentBest: 0
     speed: 0
     angle: 0
-  - clip: {fileID: 7400036, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  - clip: {fileID: 7400006, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
     velocity: {x: 6, y: 0, z: 0}
     weight: 0
     currentBest: 0
     speed: 0
     angle: 0
-  - clip: {fileID: 7400038, guid: df1f47a0a2effe74488d5da197295a19, type: 3}
+  - clip: {fileID: 7400008, guid: 1113b9b135b1e4b23b3baada4a08792a, type: 3}
     velocity: {x: -6, y: 0, z: 0}
     weight: 0
     currentBest: 0
