@@ -7,7 +7,7 @@ private var dot : float = 0.5f;
 
 function Start () {
 	if (!cameraTransform)
-		cameraTransform = Camera.main.transform;
+		cameraTransform = CameraManager.cameraTransform;
 }
 
 function Update () {

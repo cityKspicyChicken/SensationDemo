@@ -128,7 +128,7 @@ public class ReflectionFx : MonoBehaviour
 		
 		Transform closest = null;
 		float closestDist = Mathf.Infinity;
-		Vector3 pos = Camera.main.transform.position;
+		Vector3 pos = CameraManager.activeCamera.transform.position;
 		foreach (Transform t in reflectiveObjects) {
 			if (t.renderer.isVisible) {
 				float dist = (pos - t.position).sqrMagnitude;
@@ -142,7 +142,7 @@ public class ReflectionFx : MonoBehaviour
 		if(!closest)
 			return;
 			
-		ObjectBeingRendered (closest, Camera.main);
+		ObjectBeingRendered (closest, CameraManager.activeCamera);
 		
 		if (null != helperCameras)
 			helperCameras.Clear();		

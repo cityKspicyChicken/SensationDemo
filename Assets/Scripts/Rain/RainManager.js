@@ -39,7 +39,8 @@ class RainManager extends MonoBehaviour
 	function CreateMesh () : Mesh {
 		var mesh = new Mesh ();
 		
-		var cameraRight : Vector3 = Camera.main.transform.right;
+        var cameraTransform = CameraManager.cameraTransform;
+		var cameraRight : Vector3 = cameraTransform.right;
 		var cameraUp : Vector3 = (Vector3.up);
 		
 		var particleNum : int = QualityManager.quality > Quality.Medium ? numberOfParticles : numberOfParticles / 2;
@@ -70,10 +71,10 @@ class RainManager extends MonoBehaviour
 			verts[i4 + 2] = position + cameraRight * widthWithRandom + cameraUp * heightWithRandom;
 			verts[i4 + 3] = position - cameraRight * widthWithRandom + cameraUp * heightWithRandom;
 			
-			normals[i4 + 0] = -Camera.main.transform.forward;
-			normals[i4 + 1] = -Camera.main.transform.forward;
-			normals[i4 + 2] = -Camera.main.transform.forward;
-			normals[i4 + 3] = -Camera.main.transform.forward;
+			normals[i4 + 0] = -cameraTransform.forward;
+			normals[i4 + 1] = -cameraTransform.forward;
+			normals[i4 + 2] = -cameraTransform.forward;
+			normals[i4 + 3] = -cameraTransform.forward;
 
 			uvs[i4 + 0] = new Vector2(0.0f, 0.0f);
 			uvs[i4 + 1] = new Vector2(1.0f, 0.0f);

@@ -48,7 +48,7 @@ function Update () {
     lRenderer.SetPosition(0, transform.InverseTransformPoint(raycast.ray.origin));
 
 	// Cast a ray to find out the end point of the laser
-	var hitInfo : RaycastHit = raycast.GetHitInfo ();
+	var hitInfo : RaycastHit = raycast.hitInfo;
 
 	lRenderer.SetPosition (1, transform.InverseTransformPoint(hitInfo.point));
 	renderer.material.mainTextureScale.x = 0.1 * (hitInfo.distance);

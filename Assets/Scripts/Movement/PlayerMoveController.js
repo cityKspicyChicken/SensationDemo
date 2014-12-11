@@ -11,6 +11,7 @@ public var cameraSmoothing : float = 0.01;
 public var cameraPreview : float = 2.0f;
 
 // Cursor settings
+public var aimingRaycast : PerFrameRaycast;
 public var cursorPlaneHeight : float = 0;
 public var cursorFacingCamera : float = 0;
 public var cursorSmallerWithDistance : float = 0;
@@ -40,8 +41,8 @@ function Awake () {
     motor.facingDirection = Vector2.zero;
     
     // Set main camera
-    mainCamera = Camera.main;
-    mainCameraTransform = mainCamera.transform;
+    mainCamera = CameraManager.activeCamera;
+    mainCameraTransform = CameraManager.cameraTransform;
     
     // Ensure we have character set
     // Default to using the transform this component is on
@@ -134,7 +135,7 @@ function Update () {
     motor.facingDirection = Quaternion.AngleAxis(Input.GetAxis("Horizontal") * 3, Vector3.up) * character.forward;
     
     // Draw the cursor nicely
-    HandleCursorAlignment(mainCamera.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
+    // HandleCursorAlignment(mainCamera.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
             
         
     // HANDLE CAMERA POSITION
@@ -170,7 +171,7 @@ function HandleCursorAlignment (cursorWorldPosition : Vector3) {
     // HANDLE CURSOR POSITION
 
     // Set the position of the cursor object
-    cursorObject.position = cursorWorldPosition;
+    cursorObject.position = aimingRaycast.hitInfo.point;
     
     // Hide mouse cursor when within screen area, since we're showing game cursor instead
     Screen.showCursor = (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height);

@@ -69,10 +69,11 @@ class RainsplashManager extends MonoBehaviour {
 			verts[i4 + 2] = position + cameraRight * widthWithRandom + cameraUp * 2.0 * heightWithRandom;
 			verts[i4 + 3] = position - cameraRight * widthWithRandom + cameraUp * 2.0 * heightWithRandom;
 			
-			normals[i4 + 0] = -Camera.main.transform.forward;
-			normals[i4 + 1] = -Camera.main.transform.forward;
-			normals[i4 + 2] = -Camera.main.transform.forward;
-			normals[i4 + 3] = -Camera.main.transform.forward;
+            var cameraTransform = CameraManager.cameraTransform;
+			normals[i4 + 0] = -cameraTransform.forward;
+			normals[i4 + 1] = -cameraTransform.forward;
+			normals[i4 + 2] = -cameraTransform.forward;
+			normals[i4 + 3] = -cameraTransform.forward;
 
 			uvs[i4 + 0] = new Vector2(0.0f, 0.0f);
 			uvs[i4 + 1] = new Vector2(1.0f, 0.0f);

@@ -3,20 +3,19 @@ using System.Collections;
 
 public class GlowPlaneOrient : MonoBehaviour {
 	
-	public Camera m_Camera;
+	private Transform cameraTransform;
 	
 	void Start () {
-		if(!m_Camera)
-			m_Camera = Camera.main;
+		cameraTransform = CameraManager.cameraTransform;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		transform.rotation = Quaternion.LookRotation(-m_Camera.transform.forward, m_Camera.transform.up);
+		transform.rotation = Quaternion.LookRotation(-cameraTransform.forward, cameraTransform.up);
 		
 		// fade out for ugly angles
-		float dist = (m_Camera.transform.position-transform.position).sqrMagnitude;
+		float dist = (cameraTransform.position-transform.position).sqrMagnitude;
 		transform.GetChild(0).renderer.material.color = new Color(0F,0F,0F, dist*0.00000000F);
 	}
 }

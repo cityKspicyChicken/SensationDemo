@@ -29,7 +29,7 @@ function OnEnable () {
 	}
 
 	if (!cameraForRay)
-		cameraForRay = Camera.main;
+		cameraForRay = CameraManager.activeCamera;
 }
 
 private function EarlyOutIfNotSupported () : boolean {

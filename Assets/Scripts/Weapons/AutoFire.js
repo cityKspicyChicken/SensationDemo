@@ -28,7 +28,7 @@ function Update () {
 	if (firing) {
 
 		if (Time.time > lastFireTime + 1 / frequency) {
-            var hitInfo : RaycastHit = raycast.GetHitInfo ();
+            var hitInfo : RaycastHit = raycast.hitInfo;
 
 			// Spawn visual bullet
 			var coneRandomRotation = Quaternion.Euler (Random.Range (-coneAngle, coneAngle), Random.Range (-coneAngle, coneAngle), 0);
