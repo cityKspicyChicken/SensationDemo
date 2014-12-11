@@ -27,9 +27,10 @@ private function DirectPointingRay () : Ray {
 
 private function MouseMovementRay () : Ray {
     var sensitivity = 10;
-    var newDirection = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sensitivity, origin.up) * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * -sensitivity, origin.right) * direction;
-    if (Vector3.Angle(newDirection, origin.forward) < 60) {
+    var newDirection = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sensitivity, Vector3.up) * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * -sensitivity, Vector3.right) * direction;
+    if (Vector3.Angle(newDirection, Vector3.forward) < 60) {
         direction = newDirection;
     }
-    return Ray(origin.position, direction);
+
+    return Ray(origin.position, origin.TransformDirection(direction));
 }
