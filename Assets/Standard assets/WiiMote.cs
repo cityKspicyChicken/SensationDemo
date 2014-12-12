@@ -24,6 +24,10 @@ public class WiiMote : MonoBehaviour {
 
     [DllImport ("UniWii")]
     private static extern bool wiimote_getButtonNunchuckZ(int which);
+    [DllImport ("UniWii")]
+    private static extern bool wiimote_getButtonHome(int which);
+    [DllImport ("UniWii")]
+    private static extern bool wiimote_getButtonB(int which);
 
     public static WiiMote instance { get; private set; }
 
@@ -31,6 +35,12 @@ public class WiiMote : MonoBehaviour {
 
     public bool available { get; private set; }
 
+    public bool homeDown { get; private set; }
+    public bool homeUp { get; private set; }
+    public bool homePressed { get; private set; }
+    public bool bDown { get; private set; }
+    public bool bUp { get; private set; }
+    public bool bPressed { get; private set; }
     public bool nunchuckZDown { get; private set; }
     public bool nunchuckZUp { get; private set; }
     public bool nunchuckZPressed { get; private set; }
@@ -110,13 +120,16 @@ public class WiiMote : MonoBehaviour {
             return;
         }
 
+        UpdateButtons();
+
         var newIrX = wiimote_getIrX(wiiMoteIndex);
         var newIrY = wiimote_getIrY(wiiMoteIndex);
         irX = !float.IsNaN(newIrX) && !Mathf.Approximately(newIrX, -100) ? newIrX : irX;
         irY = !float.IsNaN(newIrY) && !Mathf.Approximately(newIrY, -100) ? newIrY : irY;
 
-        // sometimes the IR axis is inverted - this seems to help... :-/
-        invertIr = invertIr || float.IsNaN(newIrX) || float.IsNaN(newIrY);
+        if (bDown) {
+            invertIr = !invertIr;
+        }
 
         var newNunchuckX = wiimote_getNunchuckStickX(wiiMoteIndex);
         var newNunchuckY = wiimote_getNunchuckStickY(wiiMoteIndex);
@@ -126,8 +139,13 @@ public class WiiMote : MonoBehaviour {
         minNunchuckY = Mathf.Min(nunchuckY, minNunchuckY);
         maxNunchuckX = Mathf.Max(nunchuckX, maxNunchuckX);
         maxNunchuckY = Mathf.Max(nunchuckY, maxNunchuckY);
+    }
 
+    void OnApplicationQuit() {
+        wiimote_stop();
+    }
 
+    private void UpdateButtons() {
         nunchuckZDown = false;
         nunchuckZUp = false;
         bool newNunchuckZPressed = wiimote_getButtonNunchuckZ(wiiMoteIndex);
@@ -137,10 +155,25 @@ public class WiiMote : MonoBehaviour {
             nunchuckZUp = true;
         }
         nunchuckZPressed = newNunchuckZPressed;
-    }
 
+        homeDown = false;
+        homeUp = false;
+        bool newHomePressed = wiimote_getButtonHome(wiiMoteIndex);
+        if (newHomePressed && !homePressed) {
+            homeDown = true;
+        } else if (!newHomePressed && homePressed) {
+            homeUp = true;
+        }
+        homePressed = newHomePressed;
 
-    void OnApplicationQuit() {
-        wiimote_stop();
+        bDown = false;
+        bUp = false;
+        bool newBPressed = wiimote_getButtonB(wiiMoteIndex);
+        if (newBPressed && !bPressed) {
+            bDown = true;
+        } else if (!newBPressed && bPressed) {
+            bUp = true;
+        }
+        bPressed = newBPressed;
     }
 }
