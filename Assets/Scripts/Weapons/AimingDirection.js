@@ -4,15 +4,23 @@ var origin : Transform;
 
 var ray : Ray;
 private var direction : Vector3;
+private var wiiMote : WiiMote;
 
 function Awake () {
     direction = origin.forward;
 }
 
-function Update () {
-    ray = MouseMovementRay();
+function Start () {
+    wiiMote = WiiMote.instance;
 }
 
+function Update () {
+    if (wiiMote.available) {
+        ray = WiiDirectionRay();
+    } else {
+        ray = MouseMovementRay();
+    }
+}
 
 private function DirectPointingRay () : Ray {
     var cameraHitInfo = RaycastHit ();
@@ -33,4 +41,13 @@ private function MouseMovementRay () : Ray {
     }
 
     return Ray(origin.position, origin.TransformDirection(direction));
+}
+
+private function WiiDirectionRay () : Ray {
+    var sensitivity = 45;
+    Debug.Log(wiiMote.ir);
+    var newDirection = Quaternion.AngleAxis(wiiMote.ir.x * sensitivity, Vector3.up) * Quaternion.AngleAxis(wiiMote.ir.y * -sensitivity, Vector3.right) * Vector3.forward;
+    Debug.Log(newDirection);
+
+    return Ray(origin.position, origin.TransformDirection(newDirection));
 }

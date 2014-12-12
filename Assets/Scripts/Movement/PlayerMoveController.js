@@ -29,6 +29,8 @@ private var cameraVelocity : Vector3 = Vector3.zero;
 private var cameraOffset : Vector3 = Vector3.zero;
 private var initOffsetToPlayer : Vector3;
 
+private var wiiMote : WiiMote;
+
 // Prepare a cursor point varibale. This is the mouse position on PC and controlled by the thumbstick on mobiles.
 private var cursorScreenPosition : Vector3;
 
@@ -36,7 +38,7 @@ private var playerMovementPlane : Plane;
 
 private var joystickRightGO : GameObject;
 
-function Awake () {     
+function Awake () {
     motor.movementDirection = Vector2.zero;
     motor.facingDirection = Vector2.zero;
     
@@ -65,6 +67,10 @@ function Awake () {
     playerMovementPlane = new Plane (character.up, character.position + character.up * cursorPlaneHeight);
 }
 
+function Start () {
+    wiiMote = WiiMote.instance;
+}
+
 
 function OnDisable () {
     if (joystickLeft) 
@@ -82,9 +88,23 @@ function OnEnable () {
         joystickRight.enabled = true;
 }
 
+function HorizontalInput () : float {
+    if (wiiMote.available) {
+        return wiiMote.nunchuck.x;
+    }
+    return Input.GetAxis("Horizontal");
+}
+
+function VerticalInput () : float {
+    if (wiiMote.available) {
+        return wiiMote.nunchuck.y;
+    }
+    return Input.GetAxis ("Vertical");
+}
+
 function Update () {
     // HANDLE CHARACTER MOVEMENT DIRECTION
-    motor.movementDirection = Input.GetAxis ("Vertical") * character.forward;
+    motor.movementDirection = VerticalInput() * character.forward;
     
     // Make sure the direction vector doesn't exceed a length of 1
     // so the character can't move faster diagonally than horizontally or vertically
@@ -132,7 +152,7 @@ function Update () {
                 
                             
     // The facing direction is the direction from the character to the cursor world position
-    motor.facingDirection = Quaternion.AngleAxis(Input.GetAxis("Horizontal") * 3, Vector3.up) * character.forward;
+    motor.facingDirection = Quaternion.AngleAxis(HorizontalInput() * 3, Vector3.up) * character.forward;
     
     // Draw the cursor nicely
     // HandleCursorAlignment(mainCamera.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
