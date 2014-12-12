@@ -22,13 +22,20 @@ public class WiiMote : MonoBehaviour {
     [DllImport ("UniWii")]
     private static extern byte wiimote_getNunchuckStickY(int which);
 
+    [DllImport ("UniWii")]
+    private static extern bool wiimote_getButtonNunchuckZ(int which);
+
     public static WiiMote instance { get; private set; }
 
     public float nunchuckDeadValue = 0.1f;
 
-    private int wiiMoteIndex = 0;
-
     public bool available { get; private set; }
+
+    public bool nunchuckZDown { get; private set; }
+    public bool nunchuckZUp { get; private set; }
+    public bool nunchuckZPressed { get; private set; }
+
+    private int wiiMoteIndex = 0;
 
     private bool invertIr = false;
     private float irX = 0;
@@ -69,6 +76,9 @@ public class WiiMote : MonoBehaviour {
 
     void Awake () {
         available = false;
+        nunchuckZPressed = false;
+        nunchuckZDown = false;
+        nunchuckZUp = false;
 
         // Only allow one instance at runtime.
         if (instance != null)
@@ -116,6 +126,17 @@ public class WiiMote : MonoBehaviour {
         minNunchuckY = Mathf.Min(nunchuckY, minNunchuckY);
         maxNunchuckX = Mathf.Max(nunchuckX, maxNunchuckX);
         maxNunchuckY = Mathf.Max(nunchuckY, maxNunchuckY);
+
+
+        nunchuckZDown = false;
+        nunchuckZUp = false;
+        bool newNunchuckZPressed = wiimote_getButtonNunchuckZ(wiiMoteIndex);
+        if (newNunchuckZPressed && !nunchuckZPressed) {
+            nunchuckZDown = true;
+        } else if (!newNunchuckZPressed && nunchuckZPressed) {
+            nunchuckZUp = true;
+        }
+        nunchuckZPressed = newNunchuckZPressed;
     }
 
 

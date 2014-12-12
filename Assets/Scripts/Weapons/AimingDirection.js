@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+var wiiMoteSensitivity : float = 45;
+
 var origin : Transform;
 
 var ray : Ray;
@@ -44,10 +46,7 @@ private function MouseMovementRay () : Ray {
 }
 
 private function WiiDirectionRay () : Ray {
-    var sensitivity = 45;
-    Debug.Log(wiiMote.ir);
-    var newDirection = Quaternion.AngleAxis(wiiMote.ir.x * sensitivity, Vector3.up) * Quaternion.AngleAxis(wiiMote.ir.y * -sensitivity, Vector3.right) * Vector3.forward;
-    Debug.Log(newDirection);
+    var newDirection = Quaternion.AngleAxis(wiiMote.ir.x * wiiMoteSensitivity, Vector3.up) * Quaternion.AngleAxis(wiiMote.ir.y * -wiiMoteSensitivity, Vector3.right) * Vector3.forward;
 
     return Ray(origin.position, origin.TransformDirection(newDirection));
 }
