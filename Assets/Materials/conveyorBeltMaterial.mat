@@ -19,14 +19,14 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 3985f560a012448c6aed714ac55f374f, type: 3}
           m_Scale: {x: 1, y: -.5}
-          m_Offset: {x: 0, y: .975898385}
+          m_Offset: {x: 0, y: .929629147}
       data:
         first:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 223a5dea47c35448bab2fd2385f81039, type: 3}
           m_Scale: {x: 1, y: -.5}
-          m_Offset: {x: 0, y: .975898385}
+          m_Offset: {x: 0, y: .929629147}
       data:
         first:
           name: _Normal
@@ -66,11 +66,11 @@ Material:
         second: 0
       data:
         first:
-          name: _OneMinusReflectivity
+          name: _Threshhold
         second: 0
       data:
         first:
-          name: _Threshhold
+          name: _OneMinusReflectivity
         second: 0
     m_Colors:
       data:
