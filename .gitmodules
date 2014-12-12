@@ -1,0 +1,3 @@
+[submodule "Assets/Standard assets/Sensation"]
+	path = Assets/Standard assets/Sensation
+	url = git@github.com:sebastianludwig/SensationPlugin.git
