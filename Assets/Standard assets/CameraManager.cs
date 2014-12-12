@@ -18,6 +18,7 @@ public class CameraManager : MonoBehaviour {
 
     public Display forceDisplay = Display.None;
 
+    private WiiMote wiiMote;
 
 	private void Awake()
     {
@@ -48,6 +49,16 @@ public class CameraManager : MonoBehaviour {
             mainCamera.SetActive(true);
             cameraTransform = mainCamera.transform;
             activeCamera = mainCamera.GetComponent<Camera>();
+        }
+    }
+
+    void Start() {
+        wiiMote = WiiMote.instance;
+    }
+
+    void Update() {
+        if (wiiMote.homeDown || Input.GetKeyDown(KeyCode.Space)) {
+            OVRManager.display.RecenterPose();
         }
     }
 
