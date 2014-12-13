@@ -210,6 +210,7 @@ GameObject:
   - 120: {fileID: 12000000}
   - 82: {fileID: 8200002}
   - 114: {fileID: 11400030}
+  - 114: {fileID: 11400062}
   m_Layer: 8
   m_Name: WeaponSlot
   m_TagString: Untagged
@@ -1109,6 +1110,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400060}
   m_Layer: 8
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -2207,7 +2209,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -7.18039894, y: 1.155756, z: 13.9989262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -3586,6 +3588,191 @@ MonoBehaviour:
   transmitInterval: 10
   sensitivityInPercent: 1
   updateMode: 1
+--- !u!114 &11400060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a94fc71e8ff4d19a88d5df73baf1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityMapping:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 9.99833775
+      value: .503640711
+      inSlope: -.12707144
+      outSlope: -.12707144
+      tangentMode: 0
+    - time: 20
+      value: 0
+      inSlope: -.00229331339
+      outSlope: -.00229331339
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  intensityDistribution:
+    serializedVersion: 2
+    m_Curve:
+    - time: -45
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0
+      value: 1
+      inSlope: -.000140568358
+      outSlope: -.000140568358
+      tangentMode: 0
+    - time: 45
+      value: 0
+      inSlope: -.000198539914
+      outSlope: -.000198539914
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  indicators:
+  - actor:
+      region: 0
+      actorIndex: 1
+    angle: 18
+  - actor:
+      region: 0
+      actorIndex: 0
+    angle: 54
+  - actor:
+      region: 3
+      actorIndex: 1
+    angle: 90
+  - actor:
+      region: 1
+      actorIndex: 3
+    angle: 126
+  - actor:
+      region: 1
+      actorIndex: 2
+    angle: 162
+  - actor:
+      region: 1
+      actorIndex: 1
+    angle: 198
+  - actor:
+      region: 1
+      actorIndex: 0
+    angle: 234
+  - actor:
+      region: 2
+      actorIndex: 1
+    angle: 270
+  - actor:
+      region: 0
+      actorIndex: 3
+    angle: 306
+  - actor:
+      region: 0
+      actorIndex: 2
+    angle: 342
+--- !u!114 &11400062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c88cf7e6feee4e55af00d7ea835d906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 110
+  feedback:
+  - actor:
+      region: 4
+      actorIndex: 0
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 1
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 2
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 3
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 4
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 5
+    strength: 1
+  - actor:
+      region: 4
+      actorIndex: 6
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 0
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 1
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 2
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 3
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 4
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 5
+    strength: 1
+  - actor:
+      region: 5
+      actorIndex: 6
+    strength: 1
+  - actor:
+      region: 2
+      actorIndex: 6
+    strength: .800000012
+  - actor:
+      region: 2
+      actorIndex: 5
+    strength: .5
+  - actor:
+      region: 2
+      actorIndex: 4
+    strength: .300000012
+  - actor:
+      region: 3
+      actorIndex: 6
+    strength: .800000012
+  - actor:
+      region: 0
+      actorIndex: 5
+    strength: .5
+  - actor:
+      region: 0
+      actorIndex: 4
+    strength: .300000012
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
