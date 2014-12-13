@@ -53,9 +53,9 @@ function Awake () {
     
     initOffsetToPlayer = mainCameraTransform.position - character.position;
 
-    if (cursorPrefab) {
-        cursorObject = (Instantiate (cursorPrefab) as GameObject).transform;
-    }
+    // if (cursorPrefab) {
+    //     cursorObject = (Instantiate (cursorPrefab) as GameObject).transform;
+    // }
         
     // Save camera offset so we can use it in the first frame
     cameraOffset = mainCameraTransform.position - character.position;
