@@ -39,12 +39,12 @@ function Transmit() {
             if (Mathf.Abs(newIntensity - indicator.GetPreviousIntensity ()) < 0.001) {
                 continue;
             }
-            var vibration = Vibration ();
+            var vibration = Sensation.Vibration ();
             vibration.ActorIndex = indicator.actor.actorIndex;
             vibration.TargetRegion = indicator.actor.region;
             vibration.Intensity = newIntensity;
 
-            SensationClient.Instance.SendAsync (vibration);
+            Sensation.Client.Instance.SendAsync (vibration);
 
             indicator.SetPreviousIntensity (newIntensity);
         }

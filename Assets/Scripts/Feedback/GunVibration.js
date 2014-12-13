@@ -10,24 +10,24 @@ public var feedback : FeedbackStrength[];
 
 function OnStartFire () {
     for (instruction in feedback) {
-        var vibration = Vibration ();
+        var vibration = Sensation.Vibration ();
         vibration.ActorIndex = instruction.actor.actorIndex;
         vibration.TargetRegion = instruction.actor.region;
         vibration.Intensity = instruction.strength;
         vibration.Priority = priority;
 
-        SensationClient.Instance.SendAsync (vibration);
+        Sensation.Client.Instance.SendAsync (vibration);
     }
 }
 
 function OnStopFire () {
     for (instruction in feedback) {
-        var vibration = Vibration ();
+        var vibration = Sensation.Vibration ();
         vibration.ActorIndex = instruction.actor.actorIndex;
         vibration.TargetRegion = instruction.actor.region;
         vibration.Intensity = 0;
         vibration.Priority = priority;
 
-        SensationClient.Instance.SendAsync (vibration);
+        Sensation.Client.Instance.SendAsync (vibration);
     }
 }
