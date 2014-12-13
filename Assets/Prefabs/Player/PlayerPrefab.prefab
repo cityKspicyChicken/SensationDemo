@@ -2209,7 +2209,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -7.18039894, y: 1.155756, z: 13.9989262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -3441,13 +3441,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c94acd83d6874de18db9840ccb4c219, type: 3}
+  m_Script: {fileID: 11500000, guid: 029eb1024748947faadb4edeee116515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 0
+  region: 6
   actorIndex: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 1, z: 0}
+  origin: {x: .0542140864, y: .08579956, z: -.0945155919}
+  direction: {x: -.00600000005, y: .0544000007, z: -.99849999}
   reach: 1
   layerMask:
     serializedVersion: 2
@@ -3469,7 +3469,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   outOfReachValue: 0
   smoothingFactor: .800000012
-  transmitInterval: 1
+  transmitInterval: 10
   sensitivityInPercent: 1
   updateMode: 1
 --- !u!114 &11400054
@@ -3480,13 +3480,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100102}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c94acd83d6874de18db9840ccb4c219, type: 3}
+  m_Script: {fileID: 11500000, guid: 029eb1024748947faadb4edeee116515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 0
+  region: 7
   actorIndex: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 1, z: 0}
+  origin: {x: .0801537931, y: .0365876146, z: .098568663}
+  direction: {x: -.146200001, y: .187999994, z: .971199989}
   reach: 1
   layerMask:
     serializedVersion: 2
@@ -3508,7 +3508,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   outOfReachValue: 0
   smoothingFactor: .800000012
-  transmitInterval: 1
+  transmitInterval: 10
   sensitivityInPercent: 1
   updateMode: 1
 --- !u!114 &11400056
@@ -3519,14 +3519,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c94acd83d6874de18db9840ccb4c219, type: 3}
+  m_Script: {fileID: 11500000, guid: 029eb1024748947faadb4edeee116515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 0
-  actorIndex: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 1, z: 0}
-  reach: 1
+  region: 6
+  actorIndex: 1
+  origin: {x: .127157852, y: .0755029842, z: -.00230242545}
+  direction: {x: .976300001, y: .151700005, z: -.154200003}
+  reach: 2.5
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3547,7 +3547,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   outOfReachValue: 0
   smoothingFactor: .800000012
-  transmitInterval: 1
+  transmitInterval: 10
   sensitivityInPercent: 1
   updateMode: 1
 --- !u!114 &11400058
@@ -3558,14 +3558,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c94acd83d6874de18db9840ccb4c219, type: 3}
+  m_Script: {fileID: 11500000, guid: 029eb1024748947faadb4edeee116515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  region: 0
-  actorIndex: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 1, z: 0}
-  reach: 1
+  region: 7
+  actorIndex: 1
+  origin: {x: .143275902, y: -.0745460242, z: -.0012896806}
+  direction: {x: .91869998, y: -.362300009, z: -.157499999}
+  reach: 2.5
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3586,7 +3586,7 @@ MonoBehaviour:
     m_PostInfinity: 2
   outOfReachValue: 0
   smoothingFactor: .800000012
-  transmitInterval: 1
+  transmitInterval: 10
   sensitivityInPercent: 1
   updateMode: 1
 --- !u!114 &11400060
