@@ -23,6 +23,8 @@ private var damageEffectCenterYOffset : float;
 
 private var colliderRadiusHeuristic : float = 1.0;
 
+private var damageVibration : DamageVibration;
+
 
 function Awake () {
 	enabled = false;
@@ -42,6 +44,8 @@ function Awake () {
 		scorchMark = GameObject.Instantiate(scorchMarkPrefab, Vector3.zero, Quaternion.identity);
 		scorchMark.SetActive (false);
 	}
+
+    damageVibration = GetComponent(DamageVibration);
 }
 
 function OnDamage (amount : float, fromDirection : Vector3) {
@@ -64,6 +68,10 @@ function OnDamage (amount : float, fromDirection : Vector3) {
 		amount *= 10.0;
 	#endif
 	*/
+
+    if (damageVibration) {
+        damageVibration.OnDamage(amount, fromDirection);
+    }
 
 	health -= amount;
 	damageSignals.SendSignals (this);
