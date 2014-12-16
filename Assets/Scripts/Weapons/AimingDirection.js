@@ -20,7 +20,7 @@ function Update () {
     if (wiiMote.available) {
         ray = WiiDirectionRay();
     } else {
-        ray = MouseMovementRay();
+        ray = DirectPointingRay();
     }
 }
 
